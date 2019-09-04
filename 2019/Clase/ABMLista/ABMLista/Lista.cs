@@ -9,15 +9,16 @@ namespace ABMLista.Clases
     public class Lista
     {
         #region PROPIEDADES
-        private string[] lista = new string[5];
         private int ProximaPosicion = 0;
+        private string[,] lista = new string[2, 1];
+        private int columnas = 2;
         #endregion
 
         #region CONSTRUCTOR
         #endregion
 
         #region METODOS
-        public bool Agregar(string aTexto)
+        public bool Agregar(string aTexto, string aNota)
         {
             bool Resp = false;
             try
@@ -27,8 +28,9 @@ namespace ABMLista.Clases
                     this.AgregaRegistro(1);
                 }
 
-                lista[ProximaPosicion] = aTexto;
-                ProximaPosicion++;
+                lista[0,ProximaPosicion] = aTexto;
+                lista[1,ProximaPosicion] = aNota;
+                ProximaPosicion=ProximaPosicion+2;
                 Resp = true;
             }
             catch (Exception err)
@@ -39,15 +41,15 @@ namespace ABMLista.Clases
             return Resp;
         }
 
-        public string MostrarLista()
+        public string MostrarLista(int opcion)
         {
             string Respuesta = "";
             if (ProximaPosicion > 0)
             {
-                Respuesta = lista[0];
+                Respuesta = lista[0,0];
                 for (int i = 1; i < ProximaPosicion; i++)
                 {
-                    Respuesta = Respuesta + "\r\n" + lista[i];
+                    Respuesta = Respuesta + "\r\n" + lista[opcion,i];
                 }
             }
             return Respuesta;
@@ -55,15 +57,15 @@ namespace ABMLista.Clases
 
         private void AgregaRegistro(int incremento)
         {
-            string[] Temp = new string[lista.Length + incremento];
+            string[,] Temp = new string[0,lista.Length + incremento*columnas];
             lista = this.Copiar(lista, Temp);
         }
 
-        private string[] Copiar(string[] Origen, string[] Destino)
+        private string[,] Copiar(string[,] Origen, string[,] Destino)
         {
             for (int i = 0; i < ProximaPosicion; i++)
             {
-                Destino[i] = Origen[i];
+                Destino[0,i] = Origen[0,i];
             }
             return Destino;
         }
@@ -80,7 +82,7 @@ namespace ABMLista.Clases
 
             for (int i = 0; i < lista.Length; i++)
             {
-                if (lista[i].CompareTo(Que) == 0)
+                if (lista[0,i].CompareTo(Que) == 0)
                 {
                     Resp = i;
                     break;
@@ -102,9 +104,9 @@ namespace ABMLista.Clases
             {
                 for (int i = Pos; i < ProximaPosicion-1; i++)
                 {
-                    this.lista[i] = this.lista[i + 1];
+                    this.lista[0,i] = this.lista[0,i + 1];
                 }
-                this.lista[ProximaPosicion-1] = null;
+                this.lista[0,ProximaPosicion-1] = null;
                 ProximaPosicion = ProximaPosicion - 1;
                 AgregaRegistro(-1);
             }

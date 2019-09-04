@@ -30,9 +30,9 @@ namespace ABMLista
         private void BtAgregar_Click(object sender, EventArgs e)
         {
 
-            if (Alumnos.Agregar(txt.Text))
+            if (Alumnos.Agregar(txt.Text,txt.Text))
             {
-                lbl.Text = Alumnos.MostrarLista();
+                lbl.Text = Alumnos.MostrarLista(0);
             }
             else
             {
@@ -70,5 +70,10 @@ namespace ABMLista
 
         #endregion
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            ABM_Alumnos abm = new ABM_Alumnos();
+            abm.ShowDialog();
+        }
     }
 }
