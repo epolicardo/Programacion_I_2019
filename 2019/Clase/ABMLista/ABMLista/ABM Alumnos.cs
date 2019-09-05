@@ -16,6 +16,7 @@ namespace ABMLista
         #region Propiedades
         
         Lista listadeAlumnos = new Lista();
+        Alumnos alumnos = new Alumnos();
         
         #endregion
 
