@@ -30,7 +30,7 @@ namespace ABMLista
         private void BtAgregar_Click(object sender, EventArgs e)
         {
 
-            if (Alumnos.Agregar(txt.Text,txt.Text))
+            if (Alumnos.Agregar(txt.Text))
             {
                 lbl.Text = Alumnos.MostrarLista(0);
             }

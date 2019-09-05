@@ -28,7 +28,7 @@ namespace ABMLista
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (listadeAlumnos.Agregar(txtAlumno.Text, txtNota.Text))
+            if (listadeAlumnos.Agregar(txtAlumno.Text))
             {
                 lblListaAlumnos.Text = listadeAlumnos.MostrarLista(0);
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ABMLista.Clases
 {
-    public class Lista
+    public class ListaObjetos
     {
         #region PROPIEDADES
         private int ProximaPosicion = 0;
